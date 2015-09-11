@@ -1,0 +1,696 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="keywords" content="積慶寺,積慶寺金山禪院,一切如来心秘密全身舍利宝箧印陀罗尼琉璃大宝塔" />
+<meta name="description" content="積慶寺地處震旦西部的四川省平昌縣岳家鎮境內，背依層岩疊翠的觀音山，面向金山，顯得肅穆厚重，清淨莊嚴。" />
+<title>千集超大型动漫连续居《释迦牟尼佛的故事》高清版网播</title>
+<link rel="Shortcut Icon" href="../favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="../css/intro.css" />
+<link rel="stylesheet" type="text/css" href="../css/yx_rotaion.css"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+			/**
+
+			 * parallelRoll 左右无缝滚动
+
+			 * boxName : 最外层盒子类名
+
+			 * tagName : 滚动标签元素
+
+			 * time : 滚动间隔时间
+
+			 * direction : 滚动方向  right-->向右    left-->向左
+
+			 * visual : 可视数
+
+			 * prev : 上一张
+
+			 * next : 下一张
+
+			 * author : MR chen  370489175@qq.com
+
+			 * Date: 15-03-19
+
+			 * */
+
+			(function($){
+
+				$.fn.parallelRoll = function(options){
+
+					var opts = $.extend({}, $.fn.parallelRoll.defaults, options);
+
+					var _this = this;					
+
+					var l = _this.find(opts.tagName).length;
+
+					var autoRollTimer;
+
+					var flag = true; // 防止用户快速多次点击上下按钮
+
+					var arr = new Array();
+
+					/**
+
+					 * 如果当  (可视个数+滚动个数 >滚动元素个数)  时  为不出现空白停顿   将滚动元素再赋值一次
+
+					 * 同时赋值以后的滚动元素个数是之前的两倍  2 * l.
+
+					 * */
+
+					if(opts.amount + opts.visual > l){
+
+						_this[0].innerHTML += _this[0].innerHTML;
+
+						l = 2 * l;
+
+					}else{
+
+						l = l;
+
+					}					
+
+					var w = $(opts.tagName).outerWidth(true); //计算元素的宽度  包括补白+边框
+
+					_this.css({width: (l * w) + 'px'}); // 设置滚动层盒子的宽度
+
+					return this.each(function(){
+
+						_this.closest('.'+opts.boxName).hover(function(){							
+
+							clearInterval(autoRollTimer);
+
+						},function(){							
+
+							switch (opts.direction){
+
+								case 'left':
+
+									autoRollTimer = setInterval(function(){
+
+										left();
+
+									},opts.time);
+
+								break;
+
+								case 'right':
+
+									autoRollTimer = setInterval(function(){
+
+										right();
+
+									},opts.time);
+
+								break;
+
+								default : 
+
+									alert('参数错误！');
+
+								break;
+
+							}							
+
+						}).trigger('mouseleave');
+
+						$('.'+opts.prev).on('click',function(){
+
+							flag ? left() : "";
+
+						});
+
+						$('.'+opts.next).on('click',function(){
+
+							flag ? right() : "";
+
+						});
+
+					});					
+
+					function left(){
+
+						flag = false;
+
+						_this.animate({marginLeft : -(w*opts.amount)},1000,function(){
+
+							_this.find(opts.tagName).slice(0,opts.amount).appendTo(_this);
+
+							_this.css({marginLeft:0});
+
+							flag = true;
+
+						});
+
+					};
+
+					function right(){
+
+						flag = false;
+
+						arr = _this.find(opts.tagName).slice(-opts.amount);										
+
+						for(var i = 0; i<opts.amount; i++){
+
+							$(arr[i]).css({marginLeft : -w*(i+1)}).prependTo(_this);
+
+						}										
+
+						_this.animate({marginLeft : w*opts.amount},1000,function(){
+
+							_this.find(opts.tagName).removeAttr('style');
+
+							_this.css({marginLeft:0});
+
+							flag = true;
+
+						});
+
+					};
+
+				};
+
+				//插件默认选项
+
+			    $.fn.parallelRoll.defaults = {
+
+			    	boxName : 'box',
+
+			        tagName : 'dd',
+
+			        time : 3000,  // 
+
+			        direction : 'left', // 滚动方向
+
+			        visual : 8 , //可视数
+
+			        prev : 'prev',
+
+			        next : 'next',
+
+			        amount : 1   // 滚动数  默认是1
+
+			    };
+
+			})(jQuery);
+
+			
+
+			$(document).ready(function(){
+
+				$("#roll").parallelRoll({
+
+					amount : 1
+
+				});				
+
+			});
+
+			
+
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+		$(".button").click(function(){
+		$(".mask").css({
+		"height":$("body").height(),
+		"width":$("body").width(),
+		}).fadeIn();
+		$(".clickContent").css({
+		"top":($(window).height()-$(".clickContent").height())/2,
+		"left":($(window).width()-$(".clickContent").width())/2,
+		}).fadeIn();
+		//监听浏览器窗口大小变化,根据当前窗口改变遮罩大小
+		$(window).resize(function(){
+		$(".mask").css({
+		"height":$(window).height()+$(window).scrollTop(),
+		"width":$(window).width()+$(window).scrollLeft()
+		})
+		})
+		//监听浏览器窗口大小变化,根据当前窗口居中弹出窗口
+		$(window).resize(function(){
+		$("clickContent").css({
+		"top":($(window).height()-$(".clickContent").height())/2+$(window).scrollTop(),
+		"left":($(window).width()-$(".clickContent").width())/2+$(window).scrollLeft(),
+		})
+		})
+		})
+		$(".close").click(function(){
+		$(".mask").fadeOut();
+		$(".clickContent").fadeOut();
+		})
+		})
+		</script>
+		<style type="text/css">
+		.box
+		{
+			height: 100px;
+			border: 1px solid red;
+			overflow: hidden;
+			width: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+		#roll
+		{
+			width: 200%;
+		}
+		#roll dd
+		{
+			width: 98px;
+			height: 98px;
+			border: 1px #9E8149 solid;
+			float: left;
+			margin-right: 5px;
+		}
+		.box span
+		{
+			position: absolute;
+			bottom: 40%;
+			display: inline-block;
+			width: 20px;
+			text-align: center;
+			cursor: pointer;
+			background: #9E8149;
+			z-index: 90;
+			color: #fff;
+		}
+		.box .next
+		{
+			right: 0;
+		}.mask
+		{
+		position: absolute;
+		top: 0;
+		left:0;
+		background:#000;
+		opacity: 0.2;
+		z-index: 99;
+		}
+		.clickContent
+		{
+			position:absolute;
+		display: none;
+		width: 500px;
+		height: 500px;
+		background:#ddd;
+			font-family:"Microsoft Yahei";
+		z-index: 100;
+		}
+		.close
+		{
+			float:right;
+		width:40px;
+		height: 25px;
+		background: red;
+		color:#fff;
+		cursor:pointer;
+			text-align:center;
+			z-index:101;
+		}
+		.clickContribute
+		{
+			margin-left:20px;
+			margin-top:20px;
+			list-style:disc;
+		}
+		.clickContribute .clickTitle
+		{
+			margin-bottom:20px;
+			font-size:20px;
+			font-weight:bold;
+		}
+		.clickContribute ul
+		{
+			margin-left:20px;
+			
+		}
+		.imgTitle
+		{
+			margin-top: 50px;
+			margin-bottom: 20px;
+			clear: both;
+			font-size: 30px;
+			font-family: "Microsoft Yahei";
+		}
+		</style>
+	</head>
+	<body>
+		<div class="mask"></div>
+		<div class="clickContent">
+			<div class="close">X
+			</div>
+			<div class="clickContribute">
+				<div class="clickTitle" align="center">随喜方式</div>
+				<p>积庆寺银行帐户：</p>
+				<ul>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田帐户：积庆寺（请务必告知银行这是单位帐护，以免魔障干扰。）</p>
+						<p>银行账号：2318596109100031939</p>
+					</li>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田账户：积庆寺：（单位帐户）</p>
+						<p>银行账号：2318596219100011623</p>
+					</li>
+				</ul>
+				<br />
+				<p>或</p>
+				<p>微信随喜:</p>
+				<p align="center">
+				<img width="150" height="150" src="../images/qrcode.png" />
+				</p>
+			</div>
+
+
+		</div>
+<!--主体 start -->
+<div class="container"> 
+	<!--logo 和导航栏 start -->
+	<div class="header">
+		<div class="logo"> <img src="../images/logo.png" /> </div>
+		<div class="headerRight">
+			<div class="links"> <a href="#">设为首页</a> <a href="#">加入收藏</a> </div>
+			<div class="welcome"> <span>您好，欢迎来到积庆寺网站!</span> </div>
+		</div>
+	</div>
+	<div class="nav">
+		<ul>
+			<li class="navFirst"><a href="../index.html">首页</a></li>
+			<li><a target="_blank" href="http://qldzj.shijian.org/">乾隆大藏经</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/dzz/">经典汇总</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/wenku/">菩提文库</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/fo-tuo-ben-sheng/">佛陀本生</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/fo-men-sheng-xian/">佛门圣贤</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/si-zhong-jiang-tang/">四众讲堂</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/guang-liang-zhuan-lan/">光亮专栏</a></li>
+			<li class="navLast"><a target="_blank" href="http://weibo.com/jiqingsi">积庆寺微博</a></li>
+		</ul>
+	</div>
+	<!--logo 和导航栏 end--> 
+	<!--图片轮播 start--> 
+	
+	<!--主要内容 stat-->
+	<div class="content">
+		<div class="left"> 
+			<div class="introTitle">
+				<span>千集超大型动漫连续居《释迦牟尼佛的故事》高清版网播
+</span>
+			
+			</div>
+			<div class="introDetails">
+			
+	<p>皈命顶礼：本师释迦牟尼如来、应供、正遍知、明行足、善逝、世间解、无上士、调御丈夫、天人师、佛陀、世尊。</p> 
+	<p>感恩：十方诸佛。感恩弥勒菩萨摩诃萨;感恩文殊师利菩萨摩诃萨;感恩虚空藏菩萨摩诃萨;感恩普贤菩萨摩诃萨;感恩观自在菩萨摩诃萨;感恩地藏王菩萨摩诃萨;感恩金刚手菩萨摩诃萨;感恩摩利支天菩萨摩诃萨;感恩护持世间为度化苦海众生鞠躬尽瘁死而不已的诸大菩萨摩诃萨。</p> 
+	<p>致谢：无色界、色界和欲界所有护持世间的三十二天各大天主以及大梵天大梵天王;忉利天天王释提桓因;东、南、西、北四大护世天王;阿修逻界诸王及其眷属;大鹏金翅鸟界诸王及其眷属;龙王以及眷属;夜叉界诸王及其眷属;鬼界诸王及其眷属;</p> 
+	<p>致谢：为护持国家、民族乃至于整个世界和平和繁荣昌盛而鞠躬尽瘁的社会各界人士;</p> 
+	<p>致谢：参与制作和发行的诸山长老、善长仁翁、各位佛子以及为此劳心费神的全体工作人员;</p> 
+	<p>一千集超大型动漫连续居《释迦牟尼佛的故事》</p> 
+	<p>第一部：发无上愿</p> 
+	<p>出自《悲华经》</p> 
+	<p>译者：光亮</p> 
+	<p><span><a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE0OTQ1MTc.html">第一集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE0OTc4MzU.html">第二集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE1Mjg4NDU.html">第三集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE1ODY2NTc.html">第四集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE3MDI5MjU.html">第五集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODIwNzk2NTU.html">第六集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE3MDU1MjU.html">第七集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE4MTgyNTM.html">第八集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE4Mzg0MDM.html">第九集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODE4MTcwNDU.html">第十集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkzNTkwNTE.html">十一集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkyMTY5NzE.html">十二集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzg0OTQ0NDE.html">十三集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODA0ODE0MTk.html">十四集</a>，</span><span><a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzg0OTc3NTE.html">十五集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkxOTAyOTc.html">十六集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzg2MjIwMjM.html">十七集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzg4ODQ3MDk.html">十八集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkyMTgyNjE.html">十九集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkyMzYxNjc.html">二十集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkxODg1MDE.html">二十一集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkyMDI3NzU.html">二十二集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-ODAwMTcyNDc.html">二十三集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkzMDA3MjU.html">二十四集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzk1MTk5ODc.html">二十五集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkzNjA4Njc.html">二十六集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzkzNjM0MTU.html">二十七集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzk0MDM5MDU.html">二十八集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-Nzk1MTAyMDU.html">二十九集</a>，<a href="http://www.56.com/w42/play_album-aid-10742064_vid-NzgyNTc4MTQ.html">三十集</a>，<a href="http://www.56.com/u86/v_ODQ3ODMyMzU.html">三十一集</a>，<a href="http://www.56.com/u90/v_ODQ3ODU0Mzk.html">三十二集</a>，<a href="http://www.56.com/u42/v_ODQ3ODYwMDc.html">三十三集</a>，<a href="http://www.56.com/u30/v_ODQ3ODY4NzU.html">三十四集</a>，<a href="http://www.56.com/u80/v_ODQ4Mzc3MDE.html">三十五集</a>，<a href="http://www.56.com/u26/v_ODQ4NDE2OTU.html">三十六集</a>，<a href="http://www.56.com/u72/v_ODQ4NDMwNjE.html">三十七集</a>，<a href="http://www.56.com/u86/v_ODQ4NDM4Njc.html">三十八集</a>，<a href="http://www.56.com/u78/v_ODQ4NjQ5Nzk.html">三十九集</a>。</span></p> 
+	<p>至此，千集大片《释迦牟尼佛的故事》</p> 
+	<p>第一部全部制作完毕。网酪上传：山西--赵丰于桐(慈光)。</p> 
+	<p>第二部：修行经历</p> 
+	<p>本部内容是根据南传、汉传、藏传三大语系的大藏经中关于佛陀在因地修行的一些经历，预计是三百五十集。以大悲菩萨功德圆满，成就佛位后为结束。</p> 
+	<p>第三部：讲经说法</p> 
+	<p>本部内容主要根据南传、汉传、藏传经典编译而成。讲述的是佛陀讲经说法五十余年对世人讲述开示的点点滴滴。预计是五百五十集左右。以释迦牟尼如来示灭，秽迹金刚痛哭为结尾。</p> 
+	<p>第四部：座下弟子</p> 
+	<p>本部内容主要讲述跟随佛陀出家修行证得圣果的阿逻汉果位的弟子们和弥勒菩萨、文殊菩萨、普贤菩萨、虚空藏菩萨、地藏菩萨等部分大菩萨的修行经历，以及佛法传承的西天二十八祖和东方六祖，以六祖惠能菩萨圆寂为结束。本部集数大约是在六十一集左右。</p> 
+	<p><span><strong><span style="color: #ff0000;">十集动漫连续居《阿弥陀佛的故事》网播地址</span></strong></span></p> 
+	<p><a href="http://www.56.com/u40/v_ODA1MjMzNzM.html">第一集</a>；<a href="http://www.56.com/u26/v_ODA2MjQ2NDc.html">第二集</a>；<a href="http://www.56.com/u73/v_NzgzMjkzOTA.html">第三集</a>；<a href="http://www.56.com/u90/v_ODA2ODM2NzE.html">第四集</a>；<a href="http://www.56.com/u12/v_ODA3NzUyMDE.html">第五集</a>；<a href="http://www.56.com/u22/v_ODA4Mzc5NTU.html">第六集</a>；<a href="http://www.56.com/u14/v_ODA5NDAyMDM.html">第七集</a>；<a href="http://www.56.com/u76/v_ODEwMTM2NTc.html">第八集</a>；<a href="http://www.56.com/u82/v_ODExOTIxMjc.html">第九集</a>；<a href="http://www.56.com/u41/v_NzgxNzc4MjI.html">第十集</a>。</p> 
+	<p><span>&nbsp; <strong><span style="color: #ff0000;">十集动漫连续居《地狱亲历记》网播地址</span></strong></span></p> 
+	<p><span><a href="http://www.56.com/u46/v_ODI0MjU2NzU.html">第一集</a>；<a href="http://www.56.com/u60/v_ODI1MjU0ODE.html">第二集</a>；<a href="http://www.56.com/u82/v_ODI1OTEyMzk.html">第三集</a>；<a href="http://www.56.com/u50/v_ODI1OTIxNzU.html">第四集</a>；<a href="http://www.56.com/u46/v_ODI2OTM0NTk.html">第五集</a>；<a href="http://www.56.com/u68/v_ODI2OTQyNzM.html">第六集</a>；<a href="http://www.56.com/u46/v_ODI3NzY4ODM.html">第七集</a>；<a href="http://www.56.com/u94/v_ODI3NzU5NjM.html">第八集</a>；<a href="http://www.56.com/u90/v_ODI0MjY1MTE.html">第九集</a>；<a href="http://www.56.com/u94/v_ODIyMzA5Nzk.html">第十集</a>。</span></p> 
+	<p><span><span style="color: #ff0000;">&nbsp; &nbsp;<strong>佛法动漫片《一切如来心秘密全身舍利宝箧印陀逻尼经的故事</strong><strong>》</strong>&nbsp;</span>&nbsp; &nbsp; <a href="http://www.tudou.com/programs/view/E36lzdbN9ac/">网播地址</a>&nbsp;</span></p> 
+
+	<p><span style="color: #ff0000;"><strong><span style="">唐密大德吴立民金刚上师传承《一切如来心秘密全身舍利宝箧印陀逻尼经》法门</span></strong></span></p> 
+	<p><a href="http://www.tudou.com/programs/view/WdESToPYxn4/">网播地址</a></p> 
+
+	<p><span>&nbsp; &nbsp; <span style="color: #ff0000;">人生佛教之中国传统文化系列之二十八孝展播</span></span></p> 
+	<p>&nbsp; <a href="http://www.tudou.com/programs/view/xnabUT4wR-8/">佛说孝道</a>；<a href="http://www.tudou.com/programs/view/gAv2Qn3U6cM/"> <span id="vcate_title" class="vcate_title">孝感动天</span></a>；<a href="http://www.tudou.com/programs/view/PRt-4_mExAY/">亲尝汤药</a>；<a href="http://www.tudou.com/programs/view/jHA5BfJXj1o/"><span id="vcate_title" class="vcate_title">咬指痛心</span></a>；<a href="http://www.tudou.com/programs/view/X2T_ip0WZQo/"><span id="vcate_title" class="vcate_title">百里负米</span></a>；<a href="http://www.tudou.com/programs/view/0zT2lEKPGRo/"><span id="vcate_title" class="vcate_title">芦衣顺母</span></a>；<a href="http://www.tudou.com/programs/view/Y0wHL-QVJmQ/"><span id="vcate_title" class="vcate_title">鹿乳奉亲</span></a>；<a href="http://www.tudou.com/programs/view/LCo69RjT96Y/"><span id="vcate_title" class="vcate_title">戏彩娱亲</span></a>；<a href="http://www.tudou.com/programs/view/WFqGb-WxEbY/"><span id="vcate_title" class="vcate_title">卖身葬父</span></a>；<a href="http://www.tudou.com/programs/view/GiXDANKdxtQ/"><span id="vcate_title" class="vcate_title">刻木侍亲</span></a>；<a href="http://www.tudou.com/programs/view/UPrxsMtBIjA/"><span id="vcate_title" class="vcate_title">行俑供母</span></a>；<a href="http://www.tudou.com/programs/view/dG-7mHIj4p0/"><span id="vcate_title" class="vcate_title">怀橘遗亲</span></a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/PNG_OJg7lmk/">埋儿奉母</a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/W-osd5wGyyI/">扇枕温衾</a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/gLKALNF9gN4/">食椹异器</a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/YJyVKp8d550/">勇泉跃鲤</a>；<a href="http://www.tudou.com/programs/view/zQpVk3TLn5Q/"><span id="vcate_title" class="vcate_title">闻雷泣墓</span></a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/cy0lvz4Kz4I/">乳姑不怠</a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/-wY0ybgCdyc/">卧冰求鲤</a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/ysUuG-Pe5NM/">咨蚊饱血</a>；<a href="http://www.tudou.com/programs/view/FRtfyzjYkcE/"><span id="vcate_title" class="vcate_title">扼虎救父</span></a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/Cn4r9mOFUOs/">哭竹生笋</a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/eRm4mEKAywo/">尝粪忧心</a>；<a href="http://www.tudou.com/programs/view/KBnavljms2k/"><span id="vcate_title" class="vcate_title">弃官寻母</span></a>；<span id="vcate_title" class="vcate_title"><a href="http://www.tudou.com/programs/view/1HCHBuakKmc/">涤亲泌器</a>；</span></span></span></span></span></span></span></span></span></span></p> 
+	<p>&nbsp; &nbsp; <a href="http://www.56.com/u27/v_OTIwMzA1OTI.html">《幸福人生的因和缘》签售会讲座</a></p> 
+	<strong>
+	<p>参与福田帐护</p> 
+	<p>积庆寺银行帐护：</p> 
+	<p>开护银行：中国工商银行平昌县支行</p> 
+	<p>护 名：积庆寺(请与银行说明这是单位对公帐护)</p> 
+	<p>银行账号：2318596109100031939</p> 
+	<p>(全球通用帐护)</p> 
+	<p>开护银行：工行广州市西华路支行</p> 
+	<p>护 名：光亮</p> 
+	<p>银行账号：6212263602005917927</p> 
+	<p>支付宝帐护：13908293482</p> 
+	<p>微信钱包：13908293482</p> 
+	<p>护名：光亮</p> 
+	<p>中国邮政储蓄银行</p> 
+	<p>6210985810010026342</p> 
+	<p>护名：光亮</p> 
+	<p>回向文</p> 
+	<p>将此功德，回向十方法界。</p> 
+	<p>祈愿：</p> 
+	<p>三涂休息。</p> 
+	<p>国泰民安。</p> 
+	<p>邪见众生，回归正道，发菩提心。</p> 
+	<p>持此功德，愿供六道一切众生，皆早日 回归十方净土。</p> 
+	<p>持此功德，愿参与者、制作者、随喜者、资助者、传播者：皆早日证得：命自在，心自在，资具自在，业自在，解自在，授生自在，愿自在，神力自在，智自在，法自在这十相自在;从此以后尽未来际，圆满善利大富丰饶，幸福生活，无烦无恼。</p> 
+	<p align="right">组委会全体同仁作礼。</p> 
+
+</strong>
+<br />
+<br />
+<br />
+<br />
+			</div>
+			
+		</div>
+		<div class="right"> 
+			<!-- 捐钱 start-->
+			<div class="contribute">
+				<div class="contributeDetails">
+					<div class="towerImg"> <img src="../images/tower.png" /> </div>
+					<div class="towerInfo">
+						<ul>
+							<li>塔高：49米。寓示佛陀駐世講經說法49年。</li>
+							<li>塔身高37米，寓示著正法的三十七道品；</li>
+							<li>須彌蓮華座：12米，寓示十二因緣；</li>
+							<li>塔之總高共計49米，寓意釋迦摩尼佛講法渡眾49年； <a href="details/towerIntro.html">了解更多</a> </li>
+						</ul>
+					</div>
+					<span> 请您参建世上唯一宝箧印陀罗尼琉璃大宝塔</span>
+					<div class="button">我要随喜</div>
+				</div>
+			</div>
+			<!-- 捐款统计 start-->
+			<div class="total">
+				<div class="record_Top">
+					<p>功德统计</p>
+				</div>
+				<div class="recordTotal">
+					<div class="dl">
+						<div class="dt"> 历史捐款总额： </div>
+						<div class="dd">
+							<div class="numbers"> <span>158880</span> </div>
+							<div class="yuan"> <span>元</span> </div>
+						</div>
+					</div>
+					<div class="dl">
+						<div class="dt"> 历史捐款总人次： </div>
+						<div class="dd">
+							<div class="numbers"> <span>2000</span> </div>
+							<div class="yuan"> <span>人次</span> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--捐款统计 end--> 
+			<!--捐钱 end-->
+			<div class="record">
+				<div class="Top_Record">
+					<div class="record_Top">
+						<p>功德名册</p>
+					</div>
+					<div class="topRec_List">
+						<dl>
+							<span>编号</span> <span>姓名</span> <span>金额</span> <span>时间</span>
+						</dl>
+						<div class="maquee">
+							<ul>
+								<li>
+									<div>1</div>
+									<div>王**</div>
+									<div>30元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>2</div>
+									<div>王**</div>
+									<div>100元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>3</div>
+									<div>王**</div>
+									<div>100元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>4</div>
+									<div>王**</div>
+									<div>200元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>5</div>
+									<div>王**</div>
+									<div>300元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>6</div>
+									<div>王**</div>
+									<div>150元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>7</div>
+									<div>王**</div>
+									<div>160元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>8</div>
+									<div>王**</div>
+									<div>200元</div>
+									<div>2015/7/30</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--主要内容 end--> 
+	<!--sep-->
+	<div class="sep">
+	</div>
+	<!---sep-->
+	<!-- 图片轮播1 start -->
+	<br />
+	<br /><div class="imgTitle">
+									积庆寺图片轮播
+								</div>
+	<div class="box"> <span class="prev">《</span>
+		<dl id="roll" style="width: 1000px; margin-left: 0px;">
+			<dd><img width="98" height="98" src="../othersImgs/27.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/28.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/1.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/2.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/3.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/4.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/5.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/6.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/7.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/8.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/9.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/10.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/11.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/12.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/13.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/14.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/15.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/16.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/17.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/18.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/19.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/20.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/21.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/22.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/23.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/24.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/25.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/26.jpg"></dd>
+		</dl>
+		<span class="next">》</span> </div>
+	
+	<!--图片轮播2 end --> 
+	<!-- footer start --> 
+	
+	<!-- footer end --> 
+</div>
+<hr />
+<footer>
+	<div class="container">
+		<div class="footer">
+			<div class="contactTitle"> <span>联系我们</span> </div>
+			<hr class="carved" />
+			<div class="contactDetails">
+				<div class="contactLeft">
+					<p>积庆寺金山禅院</p>
+					<p>地 址：四川省平昌县金山（岳家镇）</p>
+					<p>电话：0827--6415205 / 6415033</p>
+					<p>传真：0827--6415038</p>
+					<p>总顾问：本焕长老</p>
+					<p>顾问团成员：惟贤长老、荣誉方丈、新成长老</p>
+					<p>管委会主任：金刚阿阇黎光亮上师</p>
+				</div>
+				<div class="contactRight">
+				
+				<p>积庆寺银行帐户：</p>
+				<ul>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田帐户：积庆寺（请务必告知银行这是单位帐护，以免魔障干扰。）</p>
+						<p>银行账号：2318596109100031939</p>
+					</li>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田账户：积庆寺：（单位帐户）</p>
+						<p>银行账号：2318596219100011623</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<hr  class="carved" />
+		<div class="contactOthers"> 
+		<div class="contactLinks">
+		<a onclick="javascript:window.external.addFavorite('http://www.shijian.org/','人生佛教网')" href="javascript:void(0)">加入收藏</a> | <a target="_blank" href="http://www.shijian.org/about/hr/">招聘信息</a> | <a target="_blank" href="http://www.shijian.org/about/copyright/">版权声明</a> | <a target="_blank" href="http://www.shijian.org/about/contactus/">联系我们</a> | <a target="_blank" href="http://www.shijian.org/about/aboutus/">关于我们</a> | <a href="javascript:void(0);" class="donate">我要参建</a>
+		</div>
+		<div class="contactCopyright">
+			<p>Copyright &copy;2015 积庆寺. All Rights Reserved</p>
+			<p>积庆寺 版权所有</p>
+			<p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备08005853号</a></p>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</footer>
+<!--主体 end --> 
+<!-- 必要的js start--> 
+
+<script type="text/javascript" src="../js/jquery.yx_rotaion.js"></script> 
+<script type="text/javascript">
+$(".yx-rotaion").yx_rotaion({auto:true});
+</script> 
+<script type="text/javascript"> 
+	  function autoScroll(obj){  
+			$(obj).find("ul").animate({  
+				marginTop : "-39px"  
+			},500,function(){  
+				$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+			})  
+		}  
+		$(function(){  
+			setInterval('autoScroll(".maquee")',3000);
+			  
+		}) 
+		
+</script> 
+<script type="text/javascript" src="../js/backtop.js"></script>
+<!--必要的js end-->
+</body>
+</html>

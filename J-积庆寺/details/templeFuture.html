@@ -1,0 +1,641 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="keywords" content="積慶寺,積慶寺金山禪院,一切如来心秘密全身舍利宝箧印陀罗尼琉璃大宝塔" />
+<meta name="description" content="積慶寺地處震旦西部的四川省平昌縣岳家鎮境內，背依層岩疊翠的觀音山，面向金山，顯得肅穆厚重，清淨莊嚴。" />
+<title>积庆寺 金山禅院未来规划</title>
+<link rel="Shortcut Icon" href="../favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="../css/intro.css" />
+<link rel="stylesheet" type="text/css" href="../css/yx_rotaion.css"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+			/**
+
+			 * parallelRoll 左右无缝滚动
+
+			 * boxName : 最外层盒子类名
+
+			 * tagName : 滚动标签元素
+
+			 * time : 滚动间隔时间
+
+			 * direction : 滚动方向  right-->向右    left-->向左
+
+			 * visual : 可视数
+
+			 * prev : 上一张
+
+			 * next : 下一张
+
+			 * author : MR chen  370489175@qq.com
+
+			 * Date: 15-03-19
+
+			 * */
+
+			(function($){
+
+				$.fn.parallelRoll = function(options){
+
+					var opts = $.extend({}, $.fn.parallelRoll.defaults, options);
+
+					var _this = this;					
+
+					var l = _this.find(opts.tagName).length;
+
+					var autoRollTimer;
+
+					var flag = true; // 防止用户快速多次点击上下按钮
+
+					var arr = new Array();
+
+					/**
+
+					 * 如果当  (可视个数+滚动个数 >滚动元素个数)  时  为不出现空白停顿   将滚动元素再赋值一次
+
+					 * 同时赋值以后的滚动元素个数是之前的两倍  2 * l.
+
+					 * */
+
+					if(opts.amount + opts.visual > l){
+
+						_this[0].innerHTML += _this[0].innerHTML;
+
+						l = 2 * l;
+
+					}else{
+
+						l = l;
+
+					}					
+
+					var w = $(opts.tagName).outerWidth(true); //计算元素的宽度  包括补白+边框
+
+					_this.css({width: (l * w) + 'px'}); // 设置滚动层盒子的宽度
+
+					return this.each(function(){
+
+						_this.closest('.'+opts.boxName).hover(function(){							
+
+							clearInterval(autoRollTimer);
+
+						},function(){							
+
+							switch (opts.direction){
+
+								case 'left':
+
+									autoRollTimer = setInterval(function(){
+
+										left();
+
+									},opts.time);
+
+								break;
+
+								case 'right':
+
+									autoRollTimer = setInterval(function(){
+
+										right();
+
+									},opts.time);
+
+								break;
+
+								default : 
+
+									alert('参数错误！');
+
+								break;
+
+							}							
+
+						}).trigger('mouseleave');
+
+						$('.'+opts.prev).on('click',function(){
+
+							flag ? left() : "";
+
+						});
+
+						$('.'+opts.next).on('click',function(){
+
+							flag ? right() : "";
+
+						});
+
+					});					
+
+					function left(){
+
+						flag = false;
+
+						_this.animate({marginLeft : -(w*opts.amount)},1000,function(){
+
+							_this.find(opts.tagName).slice(0,opts.amount).appendTo(_this);
+
+							_this.css({marginLeft:0});
+
+							flag = true;
+
+						});
+
+					};
+
+					function right(){
+
+						flag = false;
+
+						arr = _this.find(opts.tagName).slice(-opts.amount);										
+
+						for(var i = 0; i<opts.amount; i++){
+
+							$(arr[i]).css({marginLeft : -w*(i+1)}).prependTo(_this);
+
+						}										
+
+						_this.animate({marginLeft : w*opts.amount},1000,function(){
+
+							_this.find(opts.tagName).removeAttr('style');
+
+							_this.css({marginLeft:0});
+
+							flag = true;
+
+						});
+
+					};
+
+				};
+
+				//插件默认选项
+
+			    $.fn.parallelRoll.defaults = {
+
+			    	boxName : 'box',
+
+			        tagName : 'dd',
+
+			        time : 3000,  // 
+
+			        direction : 'left', // 滚动方向
+
+			        visual : 8 , //可视数
+
+			        prev : 'prev',
+
+			        next : 'next',
+
+			        amount : 1   // 滚动数  默认是1
+
+			    };
+
+			})(jQuery);
+
+			
+
+			$(document).ready(function(){
+
+				$("#roll").parallelRoll({
+
+					amount : 1
+
+				});				
+
+			});
+
+			
+
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+		$(".button").click(function(){
+		$(".mask").css({
+		"height":$("body").height(),
+		"width":$("body").width(),
+		}).fadeIn();
+		$(".clickContent").css({
+		"top":($(window).height()-$(".clickContent").height())/2,
+		"left":($(window).width()-$(".clickContent").width())/2,
+		}).fadeIn();
+		//监听浏览器窗口大小变化,根据当前窗口改变遮罩大小
+		$(window).resize(function(){
+		$(".mask").css({
+		"height":$(window).height()+$(window).scrollTop(),
+		"width":$(window).width()+$(window).scrollLeft()
+		})
+		})
+		//监听浏览器窗口大小变化,根据当前窗口居中弹出窗口
+		$(window).resize(function(){
+		$("clickContent").css({
+		"top":($(window).height()-$(".clickContent").height())/2+$(window).scrollTop(),
+		"left":($(window).width()-$(".clickContent").width())/2+$(window).scrollLeft(),
+		})
+		})
+		})
+		$(".close").click(function(){
+		$(".mask").fadeOut();
+		$(".clickContent").fadeOut();
+		})
+		})
+		</script>
+		<style type="text/css">
+		.box
+		{
+			height: 100px;
+			border: 1px solid red;
+			overflow: hidden;
+			width: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+		#roll
+		{
+			width: 200%;
+		}
+		#roll dd
+		{
+			width: 98px;
+			height: 98px;
+			border: 1px #9E8149 solid;
+			float: left;
+			margin-right: 5px;
+		}
+		.box span
+		{
+			position: absolute;
+			bottom: 40%;
+			display: inline-block;
+			width: 20px;
+			text-align: center;
+			cursor: pointer;
+			background: #9E8149;
+			z-index: 90;
+			color: #fff;
+		}
+		.box .next
+		{
+			right: 0;
+		}.mask
+		{
+		position: absolute;
+		top: 0;
+		left:0;
+		background:#000;
+		opacity: 0.2;
+		z-index: 99;
+		}
+		.clickContent
+		{
+			position:absolute;
+		display: none;
+		width: 500px;
+		height: 500px;
+		background:#ddd;
+			font-family:"Microsoft Yahei";
+		z-index: 100;
+		}
+		.close
+		{
+			float:right;
+		width:40px;
+		height: 25px;
+		background: red;
+		color:#fff;
+		cursor:pointer;
+			text-align:center;
+			z-index:101;
+		}
+		.clickContribute
+		{
+			margin-left:20px;
+			margin-top:20px;
+			list-style:disc;
+		}
+		.clickContribute .clickTitle
+		{
+			margin-bottom:20px;
+			font-size:20px;
+			font-weight:bold;
+		}
+		.clickContribute ul
+		{
+			margin-left:20px;
+			
+		}
+		.imgTitle
+		{
+			margin-top: 50px;
+			margin-bottom: 20px;
+			clear: both;
+			font-size: 30px;
+			font-family: "Microsoft Yahei";
+		}
+		</style>
+	</head>
+	<body>
+		<div class="mask"></div>
+		<div class="clickContent">
+			<div class="close">X
+			</div>
+			<div class="clickContribute">
+				<div class="clickTitle" align="center">随喜方式</div>
+				<p>积庆寺银行帐户：</p>
+				<ul>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田帐户：积庆寺（请务必告知银行这是单位帐护，以免魔障干扰。）</p>
+						<p>银行账号：2318596109100031939</p>
+					</li>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田账户：积庆寺：（单位帐户）</p>
+						<p>银行账号：2318596219100011623</p>
+					</li>
+				</ul>
+				<br />
+				<p>或</p>
+				<p>微信随喜:</p>
+				<p align="center">
+				<img width="150" height="150" src="../images/qrcode.png" />
+				</p>
+			</div>
+
+
+		</div>
+<!--主体 start -->
+<div class="container"> 
+	<!--logo 和导航栏 start -->
+	<div class="header">
+		<div class="logo"> <img src="../images/logo.png" /> </div>
+		<div class="headerRight">
+			<div class="links"> <a href="#">设为首页</a> <a href="#">加入收藏</a> </div>
+			<div class="welcome"> <span>您好，欢迎来到积庆寺网站!</span> </div>
+		</div>
+	</div>
+	<div class="nav">
+		<ul>
+			<li class="navFirst"><a href="../index.html">首页</a></li>
+			<li><a target="_blank" href="http://qldzj.shijian.org/">乾隆大藏经</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/dzz/">经典汇总</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/wenku/">菩提文库</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/fo-tuo-ben-sheng/">佛陀本生</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/fo-men-sheng-xian/">佛门圣贤</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/si-zhong-jiang-tang/">四众讲堂</a></li>
+			<li><a target="_blank" href="http://www.shijian.org/guang-liang-zhuan-lan/">光亮专栏</a></li>
+			<li class="navLast"><a target="_blank" href="http://weibo.com/jiqingsi">积庆寺微博</a></li>
+		</ul>
+	</div>
+	<!--logo 和导航栏 end--> 
+	<!--图片轮播 start--> 
+	
+	<!--主要内容 stat-->
+	<div class="content">
+		<div class="left"> 
+			<div class="introTitle">
+				<span>积庆寺 金山禅院未来规划</span>
+			</div>
+			<div class="introDetails">
+			<p><img src="../images/templeFuture4.jpg" />
+			众所周知，四川是佛教的兴盛之地，清康熙年间的古寺院就有好几千座，并有多座寺院清代皇帝赐名，积庆寺也因林生双竹而被道光皇帝赐名双竹堂，这是我们的历史。而如今政通人和，国泰民安，人心思善，是积庆寺传承博大精深的教理和净化世事人心从而普渡众生利乐有情的重要锲机。<br /><br /><br /><br /></p>
+				<p><img src="../images/templeFuture5.jpg" />积庆寺不光是着重于寺院道场的修建，更致力于弘法利生无上伟业的功德盛举。自重修以后，积庆寺在光亮上师的主导下，先后筹集巨资出版和制作了佛门巨著，这些史诗级的巨著在短短的时间里就传遍海内外绝大部分道场。由国家宗教文化出版社出版的《阿弥陀佛的故事》、中体音像出版社出版的动画版的十集动漫连续剧《阿弥陀佛的故事》（中国佛教协会会长传印长老亲自题写片名）、五集动漫连续剧《地狱亲历记》、《一切如来心秘密全身舍利宝箧印陀逻尼经的故事》、宗教文化出版社出版的《幸福人生的因和缘》等等著作问世之后在全世界都引起了极大的轰动，连国家宗教事务局官方刊物《中国宗教》杂志社、中国佛教协会官方刊物《法音》、《中国民族报》、《南方日报》、《南方都市报》、《信息时报》等多家官方媒体都先后专门撰文报道。
+</p>
+<p>如今，积庆寺在社会各界的大力支持下，又发起制作千集动漫系列剧《释迦牟尼佛的故事》，该剧根据南传、北传和藏传佛教三大语系的大藏经编译而成，该片是从宝藏如来驻世时期发愿开始讲起，然后经历三大阿僧袛劫的积功累德进而功德圆满成就佛位，释迦牟尼佛讲经说法五十余年直至在世间示灭，度化众生脱离生死苦海无量无边不可称计。该片分为四大部分：发无上愿、修行经历、讲经说法和座下弟子，最后以六祖惠能圆寂为结束，对世人理解佛教，认知佛教，靠近佛教、皈依佛门和修学佛法有着抉定性的作用。</p>
+<p>在菩萨道的六度波逻蜜中，布施位列第一！在所有功德中，法布施功德至高无上！关注与支持佛教事业发展是世间最伟大和最崇高的事业。不仅为三世诸佛、广大菩萨、诸天善神所护念。也为世间所有众生带来莫大的功德。金山禅院组委会自启建世界第一宝塔——一切如来心秘密全身舍利宝箧印陀逻尼宝塔以来，就一直得到社会各界善心人士的大力支持。现在，为了使得弘法利生的事业能够进行得圆满善利，组委会抉定面向社会公开邀请六千位善根深厚的人参与启建宝塔。财施可济一世，无畏布施可济一时，而法布施则会成就出离三界不再轮回的人生终极目地乃至于诸佛圣位，当属功德第一。有意者请与金山禅院组委会联系。</p>
+<p><strong>积庆寺相关证明图片：</strong></p>
+<p><img src="../images/templeFuture1.jpg" /></p>
+<p><img src="../images/templeFuture2.jpg" /></p>
+<p><img src="../images/templeFuture3.jpg" /></p>
+<br />
+<p><strong>积庆寺规划图：</strong></p>
+<p><img src="../images/templeFuture6.jpg" /></p>
+<p><img src="../images/templeFuture7.jpg" /></p>
+			</div>
+		</div>
+
+		<div class="right"> 
+			<!-- 捐钱 start-->
+			<div class="contribute">
+				<div class="contributeDetails">
+					<div class="towerImg"> <img src="../images/tower.png" /> </div>
+					<div class="towerInfo">
+						<ul>
+							<li>塔高：49米。寓示佛陀駐世講經說法49年。</li>
+							<li>塔身高37米，寓示著正法的三十七道品；</li>
+							<li>須彌蓮華座：12米，寓示十二因緣；</li>
+							<li>塔之總高共計49米，寓意釋迦摩尼佛講法渡眾49年； <a href="details/towerIntro.html">了解更多</a> </li>
+						</ul>
+					</div>
+					<span> 请您参建世上唯一宝箧印陀罗尼琉璃大宝塔</span>
+					<div class="button">我要随喜</div>
+				</div>
+			</div>
+			<!-- 捐款统计 start-->
+			<div class="total">
+				<div class="record_Top">
+					<p>功德统计</p>
+				</div>
+				<div class="recordTotal">
+					<div class="dl">
+						<div class="dt"> 历史捐款总额： </div>
+						<div class="dd">
+							<div class="numbers"> <span>158880</span> </div>
+							<div class="yuan"> <span>元</span> </div>
+						</div>
+					</div>
+					<div class="dl">
+						<div class="dt"> 历史捐款总人次： </div>
+						<div class="dd">
+							<div class="numbers"> <span>2000</span> </div>
+							<div class="yuan"> <span>人次</span> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--捐款统计 end--> 
+			<!--捐钱 end-->
+			<div class="record">
+				<div class="Top_Record">
+					<div class="record_Top">
+						<p>功德名册</p>
+					</div>
+					<div class="topRec_List">
+						<dl>
+							<span>编号</span> <span>姓名</span> <span>金额</span> <span>时间</span>
+						</dl>
+						<div class="maquee">
+							<ul>
+								<li>
+									<div>1</div>
+									<div>王**</div>
+									<div>30元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>2</div>
+									<div>王**</div>
+									<div>100元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>3</div>
+									<div>王**</div>
+									<div>100元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>4</div>
+									<div>王**</div>
+									<div>200元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>5</div>
+									<div>王**</div>
+									<div>300元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>6</div>
+									<div>王**</div>
+									<div>150元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>7</div>
+									<div>王**</div>
+									<div>160元</div>
+									<div>2015/7/30</div>
+								</li>
+								<li>
+									<div>8</div>
+									<div>王**</div>
+									<div>200元</div>
+									<div>2015/7/30</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--主要内容 end--> 
+	<!-- 图片轮播1 start -->
+	<div class="imgTitle">
+									积庆寺图片轮播
+								</div>
+	<div class="box"> <span class="prev">《</span>
+		<dl id="roll" style="width: 1000px; margin-left: 0px;">
+		<dd><img width="98" height="98" src="../othersImgs/27.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/28.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/1.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/2.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/3.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/4.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/5.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/6.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/7.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/8.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/9.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/10.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/11.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/12.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/13.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/14.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/15.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/16.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/17.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/18.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/19.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/20.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/21.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/22.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/23.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/24.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/25.jpg"></dd>
+				<dd><img width="98" height="98" src="../othersImgs/26.jpg"></dd>
+		</dl>
+		<span class="next">》</span> </div>
+	
+	<!--图片轮播2 end --> 
+	<!-- footer start --> 
+	
+	<!-- footer end --> 
+</div>
+<hr />
+<footer>
+	<div class="container">
+		<div class="footer">
+			<div class="contactTitle"> <span>联系我们</span> </div>
+			<hr class="carved" />
+			<div class="contactDetails">
+				<div class="contactLeft">
+					<p>积庆寺金山禅院</p>
+					<p>地 址：四川省平昌县金山（岳家镇）</p>
+					<p>电话：0827--6415205 / 6415033</p>
+					<p>传真：0827--6415038</p>
+					<p>总顾问：本焕长老</p>
+					<p>顾问团成员：惟贤长老、荣誉方丈、新成长老</p>
+					<p>管委会主任：金刚阿阇黎光亮上师</p>
+				</div>
+				<div class="contactRight">
+				
+				<p>积庆寺银行帐户：</p>
+				<ul>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田帐户：积庆寺（请务必告知银行这是单位帐护，以免魔障干扰。）</p>
+						<p>银行账号：2318596109100031939</p>
+					</li>
+					<li>
+						<p>开户银行：中国工商银行四川省巴中市平昌县支行</p>
+						<p>福田账户：积庆寺：（单位帐户）</p>
+						<p>银行账号：2318596219100011623</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<hr  class="carved" />
+		<div class="contactOthers"> 
+		<div class="contactLinks">
+		<a onclick="javascript:window.external.addFavorite('http://www.shijian.org/','人生佛教网')" href="javascript:void(0)">加入收藏</a> | <a target="_blank" href="http://www.shijian.org/about/hr/">招聘信息</a> | <a target="_blank" href="http://www.shijian.org/about/copyright/">版权声明</a> | <a target="_blank" href="http://www.shijian.org/about/contactus/">联系我们</a> | <a target="_blank" href="http://www.shijian.org/about/aboutus/">关于我们</a> | <a href="javascript:void(0);" class="donate">我要参建</a>
+		</div>
+		<div class="contactCopyright">
+			<p>Copyright &copy;2015 积庆寺. All Rights Reserved</p>
+			<p>积庆寺 版权所有</p>
+			<p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备08005853号</a></p>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</footer>
+<!--主体 end --> 
+<!-- 必要的js start--> 
+
+<script type="text/javascript" src="../js/jquery.yx_rotaion.js"></script> 
+<script type="text/javascript">
+$(".yx-rotaion").yx_rotaion({auto:true});
+</script> 
+<script type="text/javascript"> 
+	  function autoScroll(obj){  
+			$(obj).find("ul").animate({  
+				marginTop : "-39px"  
+			},500,function(){  
+				$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+			})  
+		}  
+		$(function(){  
+			setInterval('autoScroll(".maquee")',3000);
+			  
+		}) 
+		
+</script> 
+<script type="text/javascript" src="../js/backtop.js"></script>
+<!--必要的js end-->
+</body>
+</html>
